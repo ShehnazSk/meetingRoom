@@ -35,9 +35,42 @@ export const MY_FORMATS = {
 })
 export class MeetingsViewComponent implements OnInit {
   selectedDate = new FormControl(moment());
+  meeting_times = {
+    start_hour: 9,
+    total_hours: 10,
+    start_with: "AM"
+  }
+  
+  meeting_hours = []
+  
+  
   constructor() { }
   ngOnInit(): void {
     this.selectedDate.setValue(moment());
+    this.generateTimes()
+  }
+  
+  generateTimes() {
+    let starting_point = this.meeting_times.start_hour;
+    let ampm = this.meeting_times.start_with
+    for (let i = 0; i < this.meeting_times.total_hours; i++) {
+      if (starting_point == 12) {
+        ampm = 'PM'
+        this.meeting_hours.push(starting_point + '' + ampm)
+        starting_point = 1
+      }
+      else {
+        this.meeting_hours.push(starting_point + '' + ampm)
+        starting_point += 1;
+      }
+    }
+    console.log(this.meeting_hours);
+    
+  }
+  top_ = 0
+  createMeet(e, meet) {
+    console.log(e, meet);
+    this.top_ = e.layerY
   }
 
 }

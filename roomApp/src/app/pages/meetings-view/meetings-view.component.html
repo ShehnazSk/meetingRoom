@@ -6,3 +6,14 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 </div>
+
+<div class="meeting_details">
+    <div class="meeting_times">
+        <div *ngFor="let hour of meeting_hours" class="hour" (click)="createMeet($event, hour)">
+            <p>{{hour}}</p>
+        </div>
+        <div [style.top.px]="top_" class="meeting_box">
+            
+        </div>
+    </div>
+</div>

@@ -2,3 +2,38 @@
     font-size: 12px;
     
 }
+
+.meeting_details {
+    padding: 40px 0px;
+    .meeting_times {
+        position: relative;
+        .hour {
+            height: 50px;
+            border-top: 1px solid #ccc;
+            &:last-child {
+                border-bottom: 1px solid #ccc;
+            }
+            p {
+                margin: 0px;
+                display: inline-block;
+                width: 35px;
+                font-size: 11px;
+                text-align: right;
+                position: relative;
+                top: -12px;
+                background: white;
+                padding-right: 9px;
+            }
+        }
+    }
+}
+
+
+.meeting_box {
+    position: absolute;
+    height: 20px;
+    width: calc(100% - 50px);
+    background: #000;
+    left: 40px;
+    border-radius: 5px;
+}

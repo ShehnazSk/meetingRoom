@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RoomsComponent implements OnInit {
   
   availableRooms = [];
-  selectedRoom: string = ''
+  selectedRoom: string = 'Room 1'
 
   constructor() { }
 
