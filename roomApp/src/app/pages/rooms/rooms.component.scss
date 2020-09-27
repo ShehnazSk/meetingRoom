@@ -1,0 +1,46 @@
+.rooms {
+    padding: 15px;
+    height: 100vh;
+    overflow-y: auto;
+    width: 100vw;
+    border-right: 1px solid #ccc;
+    display: inline-block;
+    &.selected {
+        width: calc(100vw - 25%) !important;
+    }
+    h3 {
+        margin-top: 0px;
+    }
+    .room-box {
+        padding: 15px;
+        background: #ffffff;
+        border-radius: 15px;
+        width: 200px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 15px 15px 0px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        p {
+            text-align: center;
+            color: #3e3e3e;
+        }
+        &.active {
+          border: 1px solid #ccc;
+          box-shadow: 0px 2px 8px #c1c1c1 !important;
+        }
+    }
+}
+
+.meetings{
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    padding: 15px;
+    height: 100vh;
+    background: white;
+    h3 {
+        margin-top: 0px;
+    }
+}
+

@@ -1,1 +1,11 @@
-<p>rooms works!</p>
+<div class="rooms" [ngClass]="{'selected': selectedRoom}">
+    <h3>Rooms</h3>
+    <div *ngFor="let room of availableRooms" class="room-box" (click)="selectedRoom = room"
+      [ngClass]="{'active': selectedRoom === room}">
+        <p>{{room}}</p>
+    </div>
+</div>
+<div class="meetings" *ngIf="selectedRoom">
+    <h3>Meetings</h3>
+    <app-meetings-view></app-meetings-view>
+</div>
