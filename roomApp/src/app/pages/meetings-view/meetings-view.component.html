@@ -1,0 +1,8 @@
+<div class="meeting_date">
+    <mat-form-field>
+      <mat-label>Calender</mat-label>
+      <input matInput [matDatepicker]="picker" readonly [formControl]="selectedDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>
