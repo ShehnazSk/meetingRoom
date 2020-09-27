@@ -27,6 +27,9 @@ import { MeetingModalComponent } from './pages/meeting-modal/meeting-modal.compo
     BrowserAnimationsModule,
     MaterialModule
   ],
+  entryComponents: [
+    MeetingModalComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

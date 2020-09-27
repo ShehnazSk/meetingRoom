@@ -5,6 +5,8 @@
 
 .meeting_details {
     padding: 40px 0px;
+    height: calc(100vh - 85px);
+    overflow-y: auto;
     .meeting_times {
         position: relative;
         .hour {
@@ -31,7 +33,7 @@
 
 .meeting_box {
     position: absolute;
-    height: 25px;
+    height: 30px;
     width: calc(100% - 50px);
     background: rgba(206, 206, 206, 0.76);
     left: 40px;

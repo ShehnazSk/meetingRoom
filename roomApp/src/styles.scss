@@ -13,5 +13,22 @@ body {
 * {
     box-sizing: border-box !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*scroll bar*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  box-sizing: border-box;
+  /* background-color: #F5F5F5; */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 5px;
+}
+
+/*scroll bar*/
+
+.mat-form-field-label-wrapper {
+    height: 120% !important;
+}

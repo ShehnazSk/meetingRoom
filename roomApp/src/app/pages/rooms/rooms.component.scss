@@ -6,7 +6,7 @@
     border-right: 1px solid #ccc;
     display: inline-block;
     &.selected {
-        width: calc(100vw - 25%) !important;
+        width: calc(100vw - 25% - 6px) !important;
     }
     h3 {
         margin-top: 0px;
