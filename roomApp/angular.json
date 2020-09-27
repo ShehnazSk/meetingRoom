@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "roomApp"
+    }
+  },
+  "defaultProject": "roomApp",
+  "cli": {
+    "analytics": "2680c898-9ab8-441c-aa6d-f91f125cf969"
+  }
 }
