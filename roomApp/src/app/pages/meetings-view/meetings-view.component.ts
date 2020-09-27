@@ -5,6 +5,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import * as _moment from 'moment';
+import { GlobalService } from 'src/app/shared/services/global.service';
 import { MeetingModalComponent } from '../meeting-modal/meeting-modal.component';
 
 
@@ -38,18 +39,14 @@ export const MY_FORMATS = {
 
 export class MeetingsViewComponent implements OnInit {
   selectedDate = new FormControl(moment());
-  meeting_times = {
-    start_hour: 9,
-    total_hours: 10,
-    start_with: "AM",
-    min_time: 30,
-  }
+  meeting_times: any
   
   meeting_hours = []
   
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private globalStore: GlobalService) { }
   
   ngOnInit(): void {
+    this.meeting_times = Object.assign({} ,this.globalStore.meeting_timings)
     this.selectedDate.setValue(moment());
     this.generateTimes()
   }
