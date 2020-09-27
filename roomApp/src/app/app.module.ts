@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MeetingModalComponent } from './pages/meeting-modal/meeting-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomsComponent,
-    MeetingsViewComponent
+    MeetingsViewComponent,
+    MeetingModalComponent
   ],
   imports: [
     BrowserModule,
