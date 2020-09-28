@@ -10,13 +10,15 @@ import { MaterialModule } from './shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MeetingModalComponent } from './pages/meeting-modal/meeting-modal.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomsComponent,
     MeetingsViewComponent,
-    MeetingModalComponent
+    MeetingModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

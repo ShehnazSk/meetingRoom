@@ -9,11 +9,12 @@
 
 <div class="meeting_details">
     <div class="meeting_times">
-        <div *ngFor="let hour of meeting_hours" class="hour" (click)="createMeet($event, hour)">
-            <p>{{hour}}</p>
+        <div *ngFor="let hour of meeting_hours" class="hour" [attr.hour]="hour.hour" (click)="createMeet($event, hour)">
+            <p>{{hour.hour}} {{hour.ampm}}</p>
         </div>
-        <div [style.top.px]="top_" class="meeting_box">
-            
+        <div class="meeting_box" *ngFor="let meet of getMeetings()" [style.top.px]="getTop(meet)" [style.height.px]="getHeight(meet)">
+            <p class="time">{{meet.start_time}} - {{meet.end_time}}</p>
+            <p class="meeting_name">{{meet.meeting_name}}</p>
         </div>
     </div>
 </div>

@@ -1,20 +1,34 @@
 <mat-form-field class="wd-100">
-    <input matInput placeholder="User Name">
+    <input matInput placeholder="Meeting Name" [(ngModel)]="meeting_details['meeting_name']">
 </mat-form-field>
 <mat-form-field class="wd-100">
-    <input matInput placeholder="Meeting Name">
+  <mat-label>Date</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="meeting_details['date']">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<mat-form-field class="wd-100">
-  <input matInput placeholder="Date">
-</mat-form-field>
-<mat-form-field class="wd-100">
-  <input matInput placeholder="Date">
-</mat-form-field>
+<div>
+  <mat-form-field class="wd-50" style="width: 49%;">
+    <mat-label>Start Time</mat-label>
+    <mat-select [(ngModel)]="meeting_details['start_time']">
+      <mat-option *ngFor="let time of timing_dropdown" [value]="time">
+        {{time}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="wd-50" style="width: calc(49% + 7px);">
+    <mat-label>End Time</mat-label>
+    <mat-select [(ngModel)]="meeting_details['end_time']">
+      <mat-option *ngFor="let time of timing_dropdown" [value]="time">
+        {{time}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 <mat-form-field class="wd-100">
     <mat-label>Agenda</mat-label>
-    <textarea matInput name="" id=""></textarea>
+    <textarea matInput [(ngModel)]="meeting_details['agenda']"></textarea>
 </mat-form-field>
 
-<button type="button" class="button" (click)="onBtnClick(false)">
-  Close
-</button>
+<button type="button" class="button" (click)="onBtnClick(false)">Close</button>
+<button type="button" class="button" (click)="onBtnClick(true)" [disabled]="checkDisabled()">Schedule</button>
