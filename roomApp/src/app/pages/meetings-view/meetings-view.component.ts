@@ -30,7 +30,12 @@ export class MeetingsViewComponent implements OnInit {
   
   meeting_hours = []
   
-  constructor(private dialog: MatDialog, private globalStore: GlobalService) { }
+  constructor(private dialog: MatDialog, private globalStore: GlobalService) {
+    this.globalStore.roomChanged.subscribe(val => {
+      console.log(val);
+      this.ngOnInit()
+    })
+  }
   
   ngOnInit(): void {
     this.availableMeetings = this.globalStore.getAvailableMeetings()
@@ -63,7 +68,7 @@ export class MeetingsViewComponent implements OnInit {
     let time = mt.start_time.split(" ")[0].split(":")
     let ampm = mt.start_time.split(" ")[1]
     let adjust_top = Number(time[0]) - this.meeting_times.start_hour
-    if (ampm == 'AM') {
+    if (ampm == 'AM' || Number(time[0]) == 12) {
       return (adjust_top * 60) + Number(time[1])
     }
     else {
@@ -120,12 +125,16 @@ export class MeetingsViewComponent implements OnInit {
       if (result.flag) {
         let details_created = result.data;
         let createdDateFor = moment(details_created.date).format("MMM DD, YYYY")
-        let availableMeetings = this.globalStore.getAvailableMeetings()
-        availableMeetings[createdDateFor] = availableMeetings[createdDateFor] ? availableMeetings[createdDateFor] : []
-        availableMeetings[createdDateFor].push(details_created)
-        this.globalStore.setAvailableMeetings(availableMeetings)
+        this.availableMeetings = this.globalStore.getAvailableMeetings()
+        this.availableMeetings[createdDateFor] = this.availableMeetings[createdDateFor] ? this.availableMeetings[createdDateFor] : []
+        this.availableMeetings[createdDateFor].push(details_created)
+        this.globalStore.setAvailableMeetings(this.availableMeetings)
       }
     })
   }
 
+  deleteMeet(i) {
+    this.availableMeetings[moment(this.selectedDate.value).format("MMM DD, YYYY")].splice(i, 1)
+    this.globalStore.setAvailableMeetings(this.availableMeetings)
+  }
 }

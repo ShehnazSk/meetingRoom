@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export const MY_FORMATS = {
   parse: {
@@ -26,17 +27,27 @@ export class GlobalService {
     min_time: 30,
   }
   availableMeetings = {}
-  
+  selectedRoom: string
+  roomChanged: Subject<any> = new Subject<any>();
   getAvailableMeetings() {
     if (Object.keys(this.availableMeetings).length == 0) {
       this.availableMeetings =  JSON.parse(localStorage.getItem('availableMeetings'))
     }
-    return this.availableMeetings
+    return this.availableMeetings[this.selectedRoom] || {}
+  }
+  setRoomName(val) {
+    this.selectedRoom = val
+    this.roomChanged.next()
   }
   
   setAvailableMeetings(val) {
+    this.availableMeetings[this.selectedRoom] = val;
+    localStorage.setItem('availableMeetings', JSON.stringify(this.availableMeetings))
+  }
+  
+  setInitailAvailableMeetings(val) {
     this.availableMeetings = val;
-    localStorage.setItem('availableMeetings', JSON.stringify(val))
+    localStorage.setItem('availableMeetings', JSON.stringify(this.availableMeetings))
   }
   
 }

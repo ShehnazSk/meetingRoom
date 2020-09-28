@@ -12,9 +12,10 @@
         <div *ngFor="let hour of meeting_hours" class="hour" [attr.hour]="hour.hour" (click)="createMeet($event, hour)">
             <p>{{hour.hour}} {{hour.ampm}}</p>
         </div>
-        <div class="meeting_box" *ngFor="let meet of getMeetings()" [style.top.px]="getTop(meet)" [style.height.px]="getHeight(meet)">
+        <div class="meeting_box" *ngFor="let meet of getMeetings(); let i = index" [style.top.px]="getTop(meet)" [style.height.px]="getHeight(meet)">
             <p class="time">{{meet.start_time}} - {{meet.end_time}}</p>
             <p class="meeting_name">{{meet.meeting_name}}</p>
+            <img src="assets/images/delete.svg" alt="" class="delete_meet" (click)="deleteMeet(i)">
         </div>
     </div>
 </div>

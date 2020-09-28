@@ -151,7 +151,7 @@ export class MeetingModalComponent implements OnInit {
   }
   
   checkMeetAvailable(val) {
-    // let available_meetings = JSON.parse(localStorage.getItem('availableMeetings'))
+    // let available_meetings = this.globalStore.getAvailableMeetings()
     // if (Object.keys(available_meetings).length > 0) {
       
     // }

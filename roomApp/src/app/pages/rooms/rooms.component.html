@@ -1,6 +1,6 @@
 <div class="rooms" [ngClass]="{'selected': selectedRoom}">
     <h3>Rooms</h3>
-    <div *ngFor="let room of availableRooms" class="room-box" (click)="selectedRoom = room"
+    <div *ngFor="let room of availableRooms" class="room-box" (click)="setRoom(room)"
       [ngClass]="{'active': selectedRoom === room}">
         <p>{{room}}</p>
     </div>

@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
     if (this.username) {
       localStorage.setItem('user_name', this.username)
       if (!localStorage.getItem('availableMeetings')) {
-        this.globalStore.setAvailableMeetings({})
+        this.globalStore.setInitailAvailableMeetings({})
       }
       else {
-        this.globalStore.setAvailableMeetings(JSON.parse(localStorage.getItem('availableMeetings')))
+        this.globalStore.setInitailAvailableMeetings(JSON.parse(localStorage.getItem('availableMeetings')))
       }
       this.router.navigate(['/home']);
     }
