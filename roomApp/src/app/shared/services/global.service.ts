@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import * as moment from 'moment';
+
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MMM DD, YYYY',
@@ -48,6 +50,10 @@ export class GlobalService {
   setInitailAvailableMeetings(val) {
     this.availableMeetings = val;
     localStorage.setItem('availableMeetings', JSON.stringify(this.availableMeetings))
+  }
+  
+  convertDate(val:any) {
+    return moment(val).format(MY_FORMATS.parse.dateInput)
   }
   
 }

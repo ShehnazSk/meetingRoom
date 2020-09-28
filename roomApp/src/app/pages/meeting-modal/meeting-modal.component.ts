@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GlobalService, MY_FORMATS } from 'src/app/shared/services/global.service';
 
 import * as moment from 'moment';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { AlertComponent } from '../alert/alert.component';
 
 export interface DialogData {
   time: any;
@@ -29,7 +30,7 @@ export interface DialogData {
 })
 export class MeetingModalComponent implements OnInit {
 
-  constructor(
+  constructor(private dialog: MatDialog,
     public dialogRef: MatDialogRef<MeetingModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private globalStore: GlobalService) { }
 
@@ -108,6 +109,18 @@ export class MeetingModalComponent implements OnInit {
       if (this.checkMeetAvailable(this.meeting_details)) {
         this.dialogRef.close({ flag: val, data: this.meeting_details});
       }
+      else {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '300px';
+        dialogConfig.data = {
+          heading: "Alert",
+          message: "Meeting Overlapping. Please check."
+        };
+
+        this.dialog.open(AlertComponent, dialogConfig);
+      }
     }
     else {
       this.dialogRef.close({ flag: val });
@@ -151,13 +164,38 @@ export class MeetingModalComponent implements OnInit {
   }
   
   checkMeetAvailable(val) {
-    // let available_meetings = this.globalStore.getAvailableMeetings()
-    // if (Object.keys(available_meetings).length > 0) {
-      
-    // }
-    // else {
+    let checkDate = this.globalStore.convertDate(val.date)
+    let available_meetings = this.globalStore.getAvailableMeetings()[checkDate]
+    if (available_meetings.length > 0) {
+      for (let i = 0; i < available_meetings.length; i++) {
+        let meet = available_meetings[i];
+        let indexPresentMeetStart = this.timing_dropdown.indexOf(val.start_time);
+        let indexPresentMeetEnd = this.timing_dropdown.indexOf(val.end_time);
+        let indexMeetStart = this.timing_dropdown.indexOf(meet.start_time);
+        let indexMeetENd = this.timing_dropdown.indexOf(meet.end_time);
+        console.log("indexPresentMeetStart : ", indexPresentMeetStart);
+        console.log("indexPresentMeetEnd : ", indexPresentMeetEnd);
+        console.log("indexMeetStart : ", indexMeetStart);
+        console.log("indexMeetENd : ", indexMeetENd);
+        
+        if (indexPresentMeetStart >= indexMeetStart && indexPresentMeetStart < indexMeetENd) {
+          return false
+        }
+        else if (indexPresentMeetEnd > indexMeetStart && indexPresentMeetEnd <= indexMeetENd) {
+          return false
+        }
+        else if (indexMeetStart <= indexPresentMeetStart && indexMeetENd <= indexPresentMeetEnd) {
+          return false
+        }
+        else {
+          return true
+        }
+        
+      }
+    }
+    else {
       return true
-    // }
+    }
   }
   
   checkDisabled() {

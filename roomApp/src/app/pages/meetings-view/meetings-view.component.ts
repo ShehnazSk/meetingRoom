@@ -45,7 +45,7 @@ export class MeetingsViewComponent implements OnInit {
   }
   
   getMeetings() {
-    let meetings = this.availableMeetings[moment(this.selectedDate.value).format("MMM DD, YYYY")]
+    let meetings = this.availableMeetings[this.globalStore.convertDate(this.selectedDate.value)]
     return meetings || []
   }
   
@@ -112,7 +112,7 @@ export class MeetingsViewComponent implements OnInit {
     this.top_ = top_blocks + time
     meet.time = time
     meet.top = top_blocks + time
-    meet.date = moment(this.selectedDate.value).format("MMM DD, YYYY")
+    meet.date = this.globalStore.convertDate(this.selectedDate.value)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -124,7 +124,7 @@ export class MeetingsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result.flag) {
         let details_created = result.data;
-        let createdDateFor = moment(details_created.date).format("MMM DD, YYYY")
+        let createdDateFor = this.globalStore.convertDate(details_created.date)
         this.availableMeetings = this.globalStore.getAvailableMeetings()
         this.availableMeetings[createdDateFor] = this.availableMeetings[createdDateFor] ? this.availableMeetings[createdDateFor] : []
         this.availableMeetings[createdDateFor].push(details_created)
@@ -134,7 +134,7 @@ export class MeetingsViewComponent implements OnInit {
   }
 
   deleteMeet(i) {
-    this.availableMeetings[moment(this.selectedDate.value).format("MMM DD, YYYY")].splice(i, 1)
+    this.availableMeetings[this.globalStore.convertDate(this.selectedDate.value)].splice(i, 1)
     this.globalStore.setAvailableMeetings(this.availableMeetings)
   }
 }

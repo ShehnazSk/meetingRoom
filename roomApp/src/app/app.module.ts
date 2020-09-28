@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MeetingModalComponent } from './pages/meeting-modal/meeting-modal.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AlertComponent } from './pages/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './pages/login/login.component';
     RoomsComponent,
     MeetingsViewComponent,
     MeetingModalComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { LoginComponent } from './pages/login/login.component';
     MaterialModule
   ],
   entryComponents: [
-    MeetingModalComponent
+    MeetingModalComponent, AlertComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

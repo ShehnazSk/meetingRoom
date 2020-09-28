@@ -29,6 +29,8 @@
     <mat-label>Agenda</mat-label>
     <textarea matInput [(ngModel)]="meeting_details['agenda']"></textarea>
 </mat-form-field>
-
-<button type="button" class="button" (click)="onBtnClick(false)">Close</button>
-<button type="button" class="button" (click)="onBtnClick(true)" [disabled]="checkDisabled()">Schedule</button>
+<div class="text-right">
+  <button type="button" class="button closeBtn" (click)="onBtnClick(false)">Close</button>
+  <button type="button" class="button successBtn" (click)="onBtnClick(true)"
+    [disabled]="checkDisabled()">Schedule</button>
+</div>
