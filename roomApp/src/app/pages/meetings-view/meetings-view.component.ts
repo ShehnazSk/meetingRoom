@@ -32,7 +32,6 @@ export class MeetingsViewComponent implements OnInit {
   
   constructor(private dialog: MatDialog, private globalStore: GlobalService) {
     this.globalStore.roomChanged.subscribe(val => {
-      console.log(val);
       this.ngOnInit()
     })
   }

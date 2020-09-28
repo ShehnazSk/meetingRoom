@@ -173,10 +173,6 @@ export class MeetingModalComponent implements OnInit {
         let indexPresentMeetEnd = this.timing_dropdown.indexOf(val.end_time);
         let indexMeetStart = this.timing_dropdown.indexOf(meet.start_time);
         let indexMeetENd = this.timing_dropdown.indexOf(meet.end_time);
-        console.log("indexPresentMeetStart : ", indexPresentMeetStart);
-        console.log("indexPresentMeetEnd : ", indexPresentMeetEnd);
-        console.log("indexMeetStart : ", indexMeetStart);
-        console.log("indexMeetENd : ", indexMeetENd);
         
         if (indexPresentMeetStart >= indexMeetStart && indexPresentMeetStart < indexMeetENd) {
           return false
@@ -190,7 +186,6 @@ export class MeetingModalComponent implements OnInit {
         else {
           return true
         }
-        
       }
     }
     else {
