@@ -166,7 +166,7 @@ export class MeetingModalComponent implements OnInit {
   checkMeetAvailable(val) {
     let checkDate = this.globalStore.convertDate(val.date)
     let available_meetings = this.globalStore.getAvailableMeetings()[checkDate]
-    if (available_meetings.length > 0) {
+    if (available_meetings && available_meetings.length > 0) {
       for (let i = 0; i < available_meetings.length; i++) {
         let meet = available_meetings[i];
         let indexPresentMeetStart = this.timing_dropdown.indexOf(val.start_time);
