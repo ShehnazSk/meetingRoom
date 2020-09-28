@@ -1,0 +1,26 @@
+.loginPage{
+    width: 100vw;
+    height: 100vh;
+    padding: 20% 0px;
+    text-align: center;
+    input {
+        padding: 10px;
+        width: 260px;
+        border-radius: 5px 0px 0px 5px;
+        border: 1px solid #ccc;
+        outline: 0px;
+    }
+    button {
+        border: 0px;
+        padding: 11px 20px;
+        background: #1985ce;
+        border-radius: 0px 5px 5px 0px;
+        color: white;
+        outline: 0px;
+        cursor: pointer;
+        &:disabled {
+            background: #3498db;
+            cursor: no-drop;
+        }
+    }
+}
