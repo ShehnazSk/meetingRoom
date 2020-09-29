@@ -1,5 +1,4 @@
 {
-  "disable-next-line": "no-duplicate-imports",
   "extends": "tslint:recommended",
   "rulesDirectory": [
     "codelyzer"
