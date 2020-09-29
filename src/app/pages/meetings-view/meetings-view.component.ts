@@ -4,8 +4,8 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/mat
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import * as moment from 'moment';
-import { GlobalService, MY_FORMATS } from 'src/app/shared/services/global.service';
+import moment = require('moment');
+import { GlobalService, MY_FORMATS } from '../../shared/services/global.service';
 import { MeetingModalComponent } from '../meeting-modal/meeting-modal.component';
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalService } from 'src/app/shared/services/global.service';
+import { GlobalService } from '../../shared/services/global.service';
 
 @Component({
   selector: 'app-rooms',

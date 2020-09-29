@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GlobalService, MY_FORMATS } from 'src/app/shared/services/global.service';
+import { GlobalService, MY_FORMATS } from '../../shared/services/global.service';
 
-import * as moment from 'moment';
+import moment = require('moment');
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { AlertComponent } from '../alert/alert.component';

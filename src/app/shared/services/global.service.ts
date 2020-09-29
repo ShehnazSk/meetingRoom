@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import * as moment from 'moment';
+import moment = require('moment');
 
 export const MY_FORMATS = {
   parse: {
